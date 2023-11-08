@@ -1,0 +1,41 @@
+---
+const hobbies = [
+  "Ver peliculas",
+  "Leer",
+  "Escuchar musica",
+  "Jugar videojuegos",
+];
+
+const isActive = true;
+---
+
+<h1>Mis hobbies son:</h1>
+<h1>
+  <ul>
+    {
+      hobbies.map((hobby) => (
+        <li>
+          <h3>{hobby}</h3>
+          <button>Like</button>
+        </li>
+      ))
+    }
+  </ul>
+</h1>
+
+<h3 class="danger">
+  {isActive && 'El usuario esta activo'}
+</h3>
+
+<h1>Hola Mundo</h1>
+
+<style>
+  body {
+    background: #202020;
+    color: whitesmoke;
+  }
+
+  .danger {
+    color: red;
+  }
+</style>
