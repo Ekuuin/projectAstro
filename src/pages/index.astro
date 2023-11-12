@@ -1,41 +1,10 @@
 ---
-const hobbies = [
-  "Ver peliculas",
-  "Leer",
-  "Escuchar musica",
-  "Jugar videojuegos",
-];
-
-const isActive = true;
+import Layout from "../components/layout.astro";
+import ButtonSuscribe from "../components/buttonSuscribe.vue";
 ---
 
-<h1>Mis hobbies son:</h1>
-<h1>
-  <ul>
-    {
-      hobbies.map((hobby) => (
-        <li>
-          <h3>{hobby}</h3>
-          <button>Like</button>
-        </li>
-      ))
-    }
-  </ul>
-</h1>
-
-<h3 class="danger">
-  {isActive && 'El usuario esta activo'}
-</h3>
-
-<h1>Hola Mundo</h1>
-
-<style>
-  body {
-    background: #202020;
-    color: whitesmoke;
-  }
-
-  .danger {
-    color: red;
-  }
-</style>
+<Layout pageTitle="Inicio">
+  <h1>Página Inicial</h1>
+  <p>Bienvenidos a mi página</p>
+  <ButtonSuscribe client:only="vue"></ButtonSuscribe>
+</Layout>

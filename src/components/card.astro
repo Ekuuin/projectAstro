@@ -1,0 +1,44 @@
+---
+interface Props {
+  title?: string;
+  content?: string;
+  column?: string;
+}
+
+const {
+  title = "Título por defecto",
+  content = "Este es el contenido por defecto",
+  column = "auto"
+} = Astro.props;
+---
+
+<div class="card">
+  <h1>{title}</h1>
+  <p>
+    {content}
+  </p>
+</div>
+
+<style define:vars={{column}}>
+  .card {
+    color: black;
+    background: white;
+    border-radius: 5px;
+    box-shadow:
+      0 0px 10px 0 rgba(0, 0, 0, 0.2),
+      0 10px 15px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    grid-column: var(--column);
+  }
+
+  @media (max-width: 1020px) {
+    .card{
+      grid-column: span 1;
+    }
+  }
+</style>

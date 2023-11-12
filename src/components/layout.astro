@@ -1,0 +1,58 @@
+---
+import AppBar from "./appBar.vue";
+
+interface Props {
+  pageTitle?: string;
+  pageDescription?: string;
+}
+const { pageTitle, pageDescription } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso de Astro | {pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+  </head>
+  <body>
+    <AppBar client:only="vue">
+      <div class="navbar" slot="appBar">
+        <a href="/" class="link">Home</a>
+        <a href="/services" class="link">Servicios</a>
+        <a href="/about" class="link">Nosotros</a>
+        <a href="/posts" class="link">Posts</a>
+        <a href="/blog" class="link">Blog</a>
+      </div>
+
+      <div slot="content">
+        <slot></slot>
+      </div>
+    </AppBar>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    background: rgb(78, 78, 78);
+    color: white;
+  }
+
+  .link {
+    text-decoration: none;
+    display: block;
+    color: black;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 15px;
+  }
+</style>

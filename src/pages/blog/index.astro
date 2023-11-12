@@ -1,0 +1,30 @@
+---
+import Layout from "../../components/layout.astro";
+import codeImg from "../../images/code.jpg";
+
+const posts = await Astro.glob("./posts/*.md");
+---
+
+<Layout
+  pageTitle="Blog de Desarrollo"
+  pageDescription="Tutoriales de desarrollo y programación"
+>
+  <h1>Blog</h1>
+  <img src={codeImg.src} alt="" />
+
+  {
+    posts.map((post) => (
+      <a href={post.url} class="link">
+        {post.frontmatter.title}
+      </a>
+    ))
+  }
+</Layout>
+
+<style>
+  .link {
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+</style>
